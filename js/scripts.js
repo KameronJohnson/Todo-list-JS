@@ -1,3 +1,5 @@
+var thisList = {}
+
 $(document).ready(function() {
 
   $("form#new-list").submit(function(event) {
@@ -8,14 +10,19 @@ $(document).ready(function() {
 
     $("input#new-list-name").val("");
 
+    // newList.listName.forEach(function(list) {
     $("ul#lists").append("<li><span class='list-name'>" + newList.listName + "</span></li>");
       $(".list-name").last().click(function() {
+        $("ul#tasks").text("");
+        
         $("#show-lists").show();
         $("#show-lists h4").text(newList.listName);
-    });
-
-
-    $("form#add-new-task").submit(function(event) {
+        // $("ul#tasks").text("");
+        //
+    // });
+  });
+    $("form#add-new-task").off("submit")
+    $("form#add-new-task").on("submit", function(event) {
       event.preventDefault();
 
       var inputtedTaskName = $("input#add-new-task").val()
