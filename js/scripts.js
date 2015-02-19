@@ -6,10 +6,11 @@ $(document).ready(function() {
     var inputtedListName = $("input#new-list-name").val();
     var newList = { listName: inputtedListName, tasks: [] }
 
+    $("input#new-list-name").val("");
+
     $("ul#lists").append("<li><span class='list-name'>" + newList.listName + "</span></li>");
       $(".list-name").last().click(function() {
         $("#show-lists").show();
-
         $("#show-lists h4").text(newList.listName);
     });
 
@@ -24,8 +25,6 @@ $(document).ready(function() {
         newList.tasks.push(newTask);
       });
 
-
-      $("input#new-list-name").val("");
       $("input#add-new-task").val("");
 
       $("ul#tasks").text("");
