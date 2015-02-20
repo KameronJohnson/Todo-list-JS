@@ -12,37 +12,44 @@ $(document).ready(function() {
 
     // newList.listName.forEach(function(list) {
     $("ul#lists").append("<li><span class='list-name'>" + newList.listName + "</span></li>");
-      $(".list-name").last().click(function() {
-        $("ul#tasks").text("");
-        
-        $("#show-lists").show();
-        $("#show-lists h4").text(newList.listName);
-        // $("ul#tasks").text("");
-        //
-    // });
-  });
-    $("form#add-new-task").off("submit")
-    $("form#add-new-task").on("submit", function(event) {
-      event.preventDefault();
 
-      var inputtedTaskName = $("input#add-new-task").val()
+    $(".list-name").last().click(function() {
+      // $("ul#tasks").text("");
 
-      $(".new-task").each(function() {
-        var newTask = { taskName: inputtedTaskName }
-        newList.tasks.push(newTask);
-      });
+      $("#show-lists").show();
+      $("#show-lists h4").text(newList.listName);
 
-      $("input#add-new-task").val("");
 
       $("ul#tasks").text("");
-
       newList.tasks.forEach(function(task) {
-        $("ul#tasks").append("<li><span class='update-task'>" + task.taskName + "</li>");
-          $(".update-task").last().click(function() {
-            $("#show-tasks").show();
-          });
+        $("ul#tasks").append("<li><span class= 'update-task'>" + task.taskName + "</span></li>")
       });
-    });
+      //
+  // });
 
+      $("form#add-new-task").off("submit")
+      $("form#add-new-task").on("submit", function(event) {
+        event.preventDefault();
+
+        var inputtedTaskName = $("input#add-new-task").val()
+
+        $(".new-task").each(function() {
+          var newTask = { taskName: inputtedTaskName }
+          newList.tasks.push(newTask);
+        });
+
+        $("input#add-new-task").val("");
+
+        $("ul#tasks").text("");
+
+        newList.tasks.forEach(function(task) {
+          $("ul#tasks").append("<li><span class='update-task'>" + task.taskName + "</span></li>");
+            $(".update-task").last().click(function() {
+              $("#show-tasks").show();
+            });
+        });
+      });
+
+    });
   });
 });
