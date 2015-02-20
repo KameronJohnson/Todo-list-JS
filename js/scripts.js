@@ -10,11 +10,9 @@ $(document).ready(function() {
 
     $("input#new-list-name").val("");
 
-    // newList.listName.forEach(function(list) {
     $("ul#lists").append("<li><span class='list-name'>" + newList.listName + "</span></li>");
 
     $(".list-name").last().click(function() {
-      // $("ul#tasks").text("");
 
       $("#show-lists").show();
       $("#show-lists h4").text(newList.listName);
@@ -24,8 +22,7 @@ $(document).ready(function() {
       newList.tasks.forEach(function(task) {
         $("ul#tasks").append("<li><span class= 'update-task'>" + task.taskName + "</span></li>")
       });
-      //
-  // });
+
 
       $("form#add-new-task").off("submit")
       $("form#add-new-task").on("submit", function(event) {
